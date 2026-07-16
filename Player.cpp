@@ -1,4 +1,5 @@
 #include "Player.h"
+#include<math/MathUtility.h>
 
 using namespace KamataEngine;
 using namespace MathUtility;
