@@ -10,7 +10,7 @@ void Stage::Initialize(Model* model) {
 
 			worldTransform_[y][x].Initialize();
 
-			worldTransform_[y][x].translation_ = {float(x * 2.0f), float(-y * 2.0f), 0.0f};
+			worldTransform_[y][x].translation_ = {(-15.0f + x * 1.0f),(8.0f -y * 1.0f), 0.0f};
 
 			worldTransform_[y][x].UpdateMatrix();
 		}
@@ -21,7 +21,7 @@ void Stage::Update()
 {
 }
 
-void Stage::Draw(const Camera& camera) {
+void Stage::Draw(Camera& camera) {
 	for (int y = 0; y < kMapHeight; y++) {
 		for (int x = 0; x < kMapWidth; x++) {
 
@@ -31,4 +31,7 @@ void Stage::Draw(const Camera& camera) {
 			}
 		}
 	}
+}
+
+Stage::~Stage() {
 }

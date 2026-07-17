@@ -30,17 +30,17 @@ void Player::Update() {
 	}
 
 	// 範囲制限
-	if (worldTransform_.translation_.x > 8.0f) {
-		worldTransform_.translation_.x = 8.0f;
+	if (worldTransform_.translation_.x > 13.0f) {
+		worldTransform_.translation_.x = 13.0f;
 	}
 	if (worldTransform_.translation_.x < -14.0f) {
 		worldTransform_.translation_.x = -14.0f;
 	}
-	if (worldTransform_.translation_.y > 8.0f) {
-		worldTransform_.translation_.y = 8.0f;
+	if (worldTransform_.translation_.y > 7.0f) {
+		worldTransform_.translation_.y = 7.0f;
 	}
-	if (worldTransform_.translation_.y < -8.0f) {
-		worldTransform_.translation_.y = -8.0f;
+	if (worldTransform_.translation_.y < -7.0f) {
+		worldTransform_.translation_.y = -7.0f;
 	}
 
 	worldTransform_.UpdateMatrix();
