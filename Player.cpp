@@ -8,6 +8,7 @@ using namespace MathUtility;
 void Player::Initialize(Model* model) {
 	model_ = model;
 	worldTransform_.Initialize();
+
 	// 初期回転
 	worldTransform_.rotation_.y = std::numbers::pi_v<float> / 2.0f;
 	worldTransform_.translation_ = {-12.0f, -5.0f, 0};
