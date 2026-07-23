@@ -1,6 +1,5 @@
 #include "GameScene.h"
 
-
 using namespace KamataEngine;
 
 // デストラクタ
@@ -9,6 +8,7 @@ GameScene::~GameScene() {
 	delete modelPlayer_;
 	delete stage_;
 	delete modelBlock_;
+	delete modelEnemy_;
 }
 
 // 初期化
@@ -16,6 +16,7 @@ void GameScene::Initialize() {
 
 	// 3Dモデルの生成
 	modelPlayer_ = Model::CreateFromOBJ("player");
+	modelEnemy_ = Model::CreateFromOBJ("enemy");
 	modelBlock_ = Model::CreateFromOBJ("block");
 
 	// カメラの初期化
@@ -24,6 +25,9 @@ void GameScene::Initialize() {
 
 	player_ = new Player();
 	player_->Initialize(modelPlayer_);
+
+	enemy_ = new Enemy();
+	enemy_->Initialize(modelEnemy_);
 
 	stage_ = new Stage();
 	stage_->Initialize(modelBlock_);
@@ -34,6 +38,7 @@ void GameScene::Update()
 {
 	player_->Update();
 	stage_->Update();
+	enemy_->Update();
 }
 
 // 描画
@@ -54,6 +59,7 @@ void GameScene::Draw() {
 
 	// ここに3Dモデルインスタンスの描画処理を記述する
 	player_->Draw(camera_);
+	enemy_->Draw(camera_);
 	stage_->Draw(camera_);
 
 	// 3Dモデル描画後処理
