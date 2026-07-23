@@ -14,6 +14,7 @@ void Player::Initialize(Model* model) {
 	worldTransform_.translation_ = {-12.0f, -5.0f, 0};
 }
 
+
 // 更新
 void Player::Update() {
 	//====================
