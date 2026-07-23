@@ -24,43 +24,35 @@ void Player::Update() {
 	//右移動
 	//====================
 	if (Input::GetInstance()->PushKey(DIK_RIGHT)) {
-		worldTransform_.translation_.x += 0.1f;
+		worldTransform_.translation_.x += moveSpeed_;
 	}
 	//====================
 	//左移動
 	//====================
 	if (Input::GetInstance()->PushKey(DIK_LEFT)) {
-		worldTransform_.translation_.x -= 0.1f;
+		worldTransform_.translation_.x -= moveSpeed_;
 	}
 	//====================
 	//ジャンプ
 	//====================
 	if (Input::GetInstance()->TriggerKey(DIK_UP) && isGround_)
 	{
-			velocityY_ = jumpPower_;
+			velocity_.y = jumpPower_;
 			isGround_ = false;
 	}
 
 	//====================
 	// 重力計算
 	//====================
-	velocityY_ += gravity_;
-	worldTransform_.translation_.y += velocityY_;
+	velocity_.y += gravity_;
+	worldTransform_.translation_.y += velocity_.y;
 
 	//====================
-	// 重力判定
+	// 地面判定&&重力判定
 	//====================
 	if (worldTransform_.translation_.y <= groundY) {
 	 worldTransform_.translation_.y = groundY;
-	 velocityY_ = 0.0f;
-	}
-
-	//====================
-	// 地面判定
-	//====================
-	if (worldTransform_.translation_.y <= groundY) {
-	 worldTransform_.translation_.y = groundY;
-	 velocityY_ = 0.0f;
+	 velocity_.y = 0.0f;
 	 isGround_ = true;
 	}
 
@@ -68,16 +60,23 @@ void Player::Update() {
 	//====================
 	// 範囲制限
 	//====================
-	if (worldTransform_.translation_.x > 13.0f) {
+	if (worldTransform_.translation_.x > 13.0f)
+	{
 		worldTransform_.translation_.x = 13.0f;
 	}
-	if (worldTransform_.translation_.x < -14.0f) {
+
+	if (worldTransform_.translation_.x < -14.0f)
+	{
 		worldTransform_.translation_.x = -14.0f;
 	}
-	if (worldTransform_.translation_.y > 7.0f) {
+
+	if (worldTransform_.translation_.y > 7.0f)
+	{
 		worldTransform_.translation_.y = 7.0f;
 	}
-	if (worldTransform_.translation_.y < -7.0f) {
+
+	if (worldTransform_.translation_.y < -7.0f)
+	{
 		worldTransform_.translation_.y = -7.0f;
 	}
 

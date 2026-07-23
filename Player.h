@@ -21,10 +21,10 @@ private:
 	Model* model_ = nullptr;
 
 	  // 落下速度
-	float velocityY_ = 0.0f;
+	Vector2 velocity_ = {0.0f,0.0f};
 
 	// 重力
-	const float gravity_ = -0.3f;
+	const float gravity_ = -0.020f;
 
 	  // 地面にいるか
 	bool isGround_ = true;
@@ -33,7 +33,9 @@ private:
 	const float groundY = -7.0f;
 
 	// ジャンプ力
-	const float jumpPower_ = 1.3f;
+	const float jumpPower_ = 0.38f;
+
+	const float moveSpeed_ = 0.20f;
 
 
 	// ワールド変換
