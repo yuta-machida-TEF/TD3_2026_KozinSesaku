@@ -9,6 +9,7 @@ GameScene::~GameScene() {
 	delete stage_;
 	delete modelBlock_;
 	delete modelEnemy_;
+	delete modelEnemy2_;
 }
 
 // 初期化
@@ -18,6 +19,7 @@ void GameScene::Initialize() {
 	modelPlayer_ = Model::CreateFromOBJ("player");
 	modelEnemy_ = Model::CreateFromOBJ("enemy");
 	modelBlock_ = Model::CreateFromOBJ("block");
+	modelEnemy2_ = Model::CreateFromOBJ("enemy");
 
 	// カメラの初期化
 	camera_.translation_ = {0, 0, -20};
@@ -29,6 +31,9 @@ void GameScene::Initialize() {
 	enemy_ = new Enemy();
 	enemy_->Initialize(modelEnemy_);
 
+	enemy2_ = new Enemy2();
+	enemy2_->Initialize(modelEnemy2_);
+
 	stage_ = new Stage();
 	stage_->Initialize(modelBlock_);
 }
@@ -39,6 +44,7 @@ void GameScene::Update()
 	player_->Update();
 	stage_->Update();
 	enemy_->Update();
+	enemy2_->Update();
 }
 
 // 描画
@@ -60,6 +66,7 @@ void GameScene::Draw() {
 	// ここに3Dモデルインスタンスの描画処理を記述する
 	player_->Draw(camera_);
 	enemy_->Draw(camera_);
+	enemy2_->Draw(camera_);
 	stage_->Draw(camera_);
 
 	// 3Dモデル描画後処理

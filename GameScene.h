@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Stage.h"
 #include"Enemy.h"
+#include"Enemy2.h"
 #include <KamataEngine.h>
 
 using namespace KamataEngine;
@@ -26,12 +27,15 @@ private:
 	// 3Dモデル
 	Model* modelPlayer_ = nullptr;
 	Model* modelEnemy_ = nullptr;
+	Model* modelEnemy2_ = nullptr;
 	Model* modelBlock_ = nullptr;
 
 	// オブジェクト
 	Player* player_ = nullptr;
 
 	Enemy* enemy_ = nullptr;
+
+	Enemy2* enemy2_ = nullptr;
 
 	Stage* stage_ = nullptr;
 
