@@ -11,10 +11,15 @@ public:
 	void Initialize(Model* model);
 
 	// 更新
-	void Update();
+	void Update(const KamataEngine::WorldTransform& platform,
+		        const KamataEngine::Vector3& platformSize);
 
 	// 描画
 	void Draw(Camera& camera);
+
+	bool CheckLanding(const KamataEngine::WorldTransform& platform,
+		              const KamataEngine::Vector3& platformSize,
+		              float previousBottom);
 
 private:
 	// モデル
@@ -32,12 +37,16 @@ private:
 	//地面の高さ
 	const float groundY = -7.0f;
 
+	float previousBottom_ = 0.0f;
+
 	// ジャンプ力
 	const float jumpPower_ = 0.38f;
 
 	const float moveSpeed_ = 0.20f;
 
 
+
 	// ワールド変換
 	WorldTransform worldTransform_;
+
 };

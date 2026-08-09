@@ -42,4 +42,6 @@ private:
 	// カメラ
 	Camera camera_;
 
+	float previousBottom = 0.0f;
+
 };

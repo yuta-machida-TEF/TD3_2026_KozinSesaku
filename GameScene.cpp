@@ -41,7 +41,29 @@ void GameScene::Initialize() {
 // 更新
 void GameScene::Update() 
 {
-	player_->Update();
+	WorldTransform platform;
+
+	platform.Initialize();
+
+	platform.translation_ = {0.0f, 0.0f, 0.0f};
+
+	Vector3 platformSize = {2.0f, 2.0f, 2.0f};
+
+	player_->Update(platform,platformSize);
+
+	//==============
+	//足元
+	//==============
+	// Stageの足場を1個ずつ調べる
+	for (int y = 0; y < Stage::kMapHeight; y++) {
+		for (int x = 0; x < Stage::kMapWidth; x++) {
+
+			if (stage_->GetMapData(y, x) == 1) {
+
+				player_->CheckLanding(stage_->GetWorldTransform(y, x), {0.1f, 0.1f, 0.1f}, previousBottom);
+			}
+		}
+	}
 	stage_->Update();
 	enemy_->Update();
 	enemy2_->Update();
