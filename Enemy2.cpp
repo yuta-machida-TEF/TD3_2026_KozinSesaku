@@ -6,7 +6,7 @@ void Enemy2::Initialize(Model* model) {
 
 	// 初期回転
 	worldTransform_.rotation_.y = std::numbers::pi_v<float> / 2.0f;
-	worldTransform_.translation_ = {7.0f, -2.0f, 0};
+	worldTransform_.translation_ = {7.0f, 3.0f, 0};
 }
 
 void Enemy2::Update() {
