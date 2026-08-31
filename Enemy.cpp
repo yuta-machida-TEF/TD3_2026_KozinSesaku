@@ -12,6 +12,11 @@ void Enemy::Initialize(Model* model)
 
 void Enemy::Update() 
 {
+	if (!isAlive_) {
+		return;
+	}
+
+
 	//====================
 	// 重力計算
 	//====================
@@ -32,5 +37,11 @@ void Enemy::Update()
 
 void Enemy::Draw(Camera& camera)
 {
+	if (!isAlive_) {
+		return;
+	}
+
 	model_->Draw(worldTransform_, camera);
 }
+
+void Enemy::Kill() { isAlive_ = false; }

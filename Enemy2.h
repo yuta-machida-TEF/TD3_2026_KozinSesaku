@@ -16,6 +16,14 @@ public:
 	// 描画
 	void Draw(Camera& camera);
 
+	void Kill();
+
+	const WorldTransform& GetWorldTransform() const { return worldTransform_; }
+
+	const Vector3& GetSize() const { return size_; }
+
+	bool IsAlive() const { return isAlive_; }
+
 private:
 	// モデル
 	Model* model_ = nullptr;
@@ -29,8 +37,13 @@ private:
 	// 地面にいるか
 	bool isGround_ = true;
 
+	// 敵が生きているか
+	bool isAlive_ = true;
+
 	// 地面の高さ
 	const float groundY = -7.0f;
+
+	Vector3 size_ = {1.0f, 1.0f, 1.0f};
 
 	// ワールド変換
 	WorldTransform worldTransform_;
